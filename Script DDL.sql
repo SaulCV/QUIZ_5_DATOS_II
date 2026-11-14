@@ -18,7 +18,6 @@ CREATE TABLE Vehiculos (
     precio          DECIMAL(12,2) NOT NULL,
     estado          VARCHAR(10)   NOT NULL,
     fecha_registro  DATE          NOT NULL DEFAULT (CURRENT_DATE),
-
     CONSTRAINT pk_vehiculos         PRIMARY KEY (id_vehiculo),
     CONSTRAINT uq_vehiculos_vin     UNIQUE (vin),
     CONSTRAINT chk_vehiculos_anio   CHECK (anio BETWEEN 1900 AND YEAR(fecha_registro)),
@@ -57,7 +56,6 @@ CREATE TABLE Vendedores (
     correo               VARCHAR(100) NOT NULL,
     fecha_contratacion   DATE         NOT NULL DEFAULT (CURRENT_DATE),
     porcentaje_comision  DECIMAL(5,2) NOT NULL DEFAULT 0.00,
-
     CONSTRAINT pk_vendedores           PRIMARY KEY (id_vendedor),
     CONSTRAINT uq_vendedores_cedula    UNIQUE (cedula),
     CONSTRAINT uq_vendedores_correo    UNIQUE (correo),
@@ -73,7 +71,7 @@ CREATE TABLE Ventas (
     id_vehiculo   INT UNSIGNED  NOT NULL,
     id_cliente    INT UNSIGNED  NOT NULL,
     id_vendedor   INT UNSIGNED  NOT NULL,
-    fecha_venta   DATE          NOT NULL DEFAULT (CURRENT_DATE),
+    fecha_venta   DATE NOT NULL DEFAULT (CURRENT_DATE),
     precio_venta  DECIMAL(12,2) NOT NULL,
     metodo_pago   VARCHAR(20)   NOT NULL,
 
